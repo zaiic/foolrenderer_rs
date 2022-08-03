@@ -1,25 +1,29 @@
 use core::ops;
 use crate::math::utility;
 
+#[derive(Debug, PartialEq)]
 pub struct Vec2 {
-    x: f32,
-    y: f32,
+    pub x: f32,
+    pub y: f32,
 }
 
+#[derive(Debug, PartialEq)]
 pub struct Vec3 {
-    x: f32,
-    y: f32,
-    z: f32,
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
 }
 
+#[derive(Debug, PartialEq)]
 pub struct Vec4 {
-    x: f32,
-    y: f32,
-    z: f32,
-    w: f32,
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+    pub w: f32,
 }
 
 // One vector2 { 0., 0. }
+#[macro_export]
 macro_rules! vec2_zero {
     () => {
         Vec2 { x: 0., y: 0. }
@@ -27,6 +31,7 @@ macro_rules! vec2_zero {
 }
 
 // One vector2 { 1., 1. }
+#[macro_export]
 macro_rules! vec2_one {
     () => {
         Vec2 { x: 1., y: 1. }
@@ -34,6 +39,7 @@ macro_rules! vec2_one {
 }
 
 // One vector3 { 0., 0., 0. }
+#[macro_export]
 macro_rules! vec3_zero {
     () => {
         Vec3 { x: 0., y: 0., z: 0. }
@@ -41,6 +47,7 @@ macro_rules! vec3_zero {
 }
 
 // One vector3 { 1., 1., 1. }
+#[macro_export]
 macro_rules! vec3_one {
     () => {
         Vec3 { x: 1., y: 1., z: 1. }  
@@ -48,6 +55,7 @@ macro_rules! vec3_one {
 }
 
 // One vector4 { 0., 0., 0., 0. }
+#[macro_export]
 macro_rules! vec4_zero {
     () => {
         Vec4 { x: 0., y: 0., z: 0., w: 0. }
@@ -55,6 +63,7 @@ macro_rules! vec4_zero {
 }
 
 // One vector4 { 1., 1., 1., 1. }
+#[macro_export]
 macro_rules! vec4_one {
     () => {
         Vec4 { x: 1., y: 1., z: 1., w: 1. }
