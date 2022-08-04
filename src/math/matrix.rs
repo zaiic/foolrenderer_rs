@@ -273,10 +273,56 @@ impl Mat4 {
         m
     }
 
-    // TODO:
-    // pub fn look_at(from: Vec3, to: Vec3, up: Vec3) -> Self
-    // pub fn perspective(fov: f32, aspect: f32, near: f32, far: f32) -> Self
-    // pub fn orthographic(right: f32, top: f32, near: f32, far: f32) -> Self
+    #[inline]
+    pub fn look_at(from: Vec3, to: Vec3, up: Vec3) -> Self {
+        let z_axis = (from - to).normalize();
+        let x_axis = up.cross(z_axis).normalize();
+        let y_axis = z_axis.cross(x_axis);
+        let mut m = mat4_identity!();
+
+        m.elem[0][0] = x_axis.x;
+        m.elem[0][1] = x_axis.y;
+        m.elem[0][2] = x_axis.z;
+
+        m.elem[1][0] = y_axis.x;
+        m.elem[1][1] = y_axis.y;
+        m.elem[1][2] = y_axis.z;
+
+        m.elem[2][0] = z_axis.x;
+        m.elem[2][1] = z_axis.y;
+        m.elem[2][2] = z_axis.z;
+
+        m.elem[0][3] = -(x_axis.dot(from));
+        m.elem[1][3] = -(y_axis.dot(from));
+        m.elem[2][3] = -(z_axis.dot(from));
+
+        m
+    }
+
+    #[inline]
+    pub fn perspective(fov: f32, aspect: f32, near: f32, far: f32) -> Self {
+        let mut m = mat4_zero!();
+        let distance = far - near;
+        m.elem[1][1] = 1./ ((fov / 2.).tan());
+        m.elem[0][0] = m.elem[1][1] / aspect;
+        m.elem[2][2] = (-far - near) / distance;
+        m.elem[2][3] = (-2. * far * near) / distance;
+        m.elem[3][2] = -1.;
+
+        m
+    }
+
+    #[inline]
+    pub fn orthographic(right: f32, top: f32, near: f32, far: f32) -> Self {
+        let mut m = mat4_identity!();
+        let distance = far - near;
+        m.elem[0][0] = 1. / right;
+        m.elem[1][1] = 1. / top;
+        m.elem[2][2] = -2. / distance;
+        m.elem[2][3] = (-near - far) / distance;
+
+        m
+    }
 
     #[inline]
     pub fn into_mat3(self) -> Mat3 {
