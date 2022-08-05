@@ -9,3 +9,6 @@
 
 2. 测试相关库 (Test relative module)
     - [ ] [math/test.rs](./src/math/test.rs)
+
+3. 用Rust重写foolrenderer中的**graphics**库 (Refactor the graphics module using Rust)
+    - [x] [graphics/color](./src/graphics/color.rs)
