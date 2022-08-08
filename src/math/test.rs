@@ -127,6 +127,7 @@ fn test_mat4_impl() {
     ] };
     assert_eq!(m * v, Vec4::from(&[2., 4., 6., 8.]));
 
+    // Note: There is a precision problem for floating point number.
     // Calculate the inverse of the matrix.
     // impl ops::Not for Mat4
     // assert_eq!(!m, mat4_zero!());
