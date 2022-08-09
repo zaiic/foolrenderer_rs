@@ -1,5 +1,4 @@
 # foolrenderer_rs
-## 📔 目录 (Table of Contents)
 
 ## 🔥 步骤 (Step)
 1. 用Rust重写foolrenderer中的**math**库 (Refactor the math module using Rust)
@@ -12,3 +11,4 @@
 
 3. 用Rust重写foolrenderer中的**graphics**库 (Refactor the graphics module using Rust)
     - [x] [graphics/color](./src/graphics/color.rs)
+    - [x] [graphics/texture](./src/graphics/texture.rs)
