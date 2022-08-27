@@ -1,3 +1,6 @@
 [submodule "external/t1gars"]
 	path = external/t1gars
 	url = https://github.com/zaiic/t1gars.git
+[submodule "external/objloader"]
+	path = external/objloader
+	url = https://github.com/zaiic/objloader
