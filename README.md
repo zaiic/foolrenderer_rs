@@ -12,3 +12,7 @@
 3. 用Rust重写foolrenderer中的**graphics**库 (Refactor the graphics module using Rust)
     - [x] [graphics/color](./src/graphics/color.rs)
     - [x] [graphics/texture](./src/graphics/texture.rs)
+
+4. 加载tga文件 (Load tga file)
+
+    [t1gars](https://github.com/zaiic/t1gars): Lightweight library written in Rust for handling the Truevision TGA image format. 
