@@ -1,0 +1,3 @@
+[submodule "external/t1gars"]
+	path = external/t1gars
+	url = https://github.com/zaiic/t1gars.git
