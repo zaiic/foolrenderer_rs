@@ -6,7 +6,7 @@ use crate::vec4_one;
 
 use super::color::{u8_to_f32, convert_to_linear_color};
 
-#[derive(PartialEq, Eq,Debug)]
+#[derive(PartialEq, Eq,Debug, Clone)]
 pub enum TextureFormat {
     R8,
     RGB8,
@@ -45,6 +45,10 @@ impl Texture {
         })
     }
 
+    pub fn get_texture_format(&self) -> TextureFormat {
+        self.format.clone()
+    }
+
     pub fn set_texture_pixels(&mut self, pixels: &[u8]) -> Result<(), &str>{
         let pixel_size = self.get_pixel_size();
 
@@ -63,8 +67,8 @@ impl Texture {
         }
     }
 
-    pub fn get_texture_pixels(&self) -> &Vec<u8> {
-        &self.pixels
+    pub fn get_texture_pixels(&mut self) -> &mut Vec<u8> {
+        &mut self.pixels
     }
 
     #[inline]
