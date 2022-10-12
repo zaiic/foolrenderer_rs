@@ -70,11 +70,7 @@ impl FrameBuffer {
                 self.width = std::u32::MAX;
                 self.height = std::u32::MIN;
 
-                // FIXME:
-                // let color_buf = self.color_buffer;
-                // let depth_buf = self.depth_buffer;
-                // self.set_min_size(color_buf);
-                // self.set_min_size(depth_buf);
+                self.shrink();
             }
         }
     }
@@ -127,10 +123,11 @@ impl FrameBuffer {
     }
 
     #[inline]
-    fn set_min_size(&mut self, buffer: &Option<Box<Texture>>) {
-        let (buf_width, buf_height) = buffer.as_ref().unwrap().get_shape();
-        self.width = u32_min(self.width, buf_width);
-        self.height = u32_min(self.height, buf_height);
+    fn shrink(&mut self) {
+        self.width = u32_min(self.width, self.color_buffer.as_ref().unwrap().width);
+        self.height = u32_min(self.height, self.color_buffer.as_ref().unwrap().height);
+        self.width = u32_min(self.width, self.depth_buffer.as_ref().unwrap().width);
+        self.height = u32_min(self.height, self.depth_buffer.as_ref().unwrap().height);
     }
 }
 
@@ -142,13 +139,3 @@ pub fn set_clean_color(red: f32, green: f32, blue: f32, alpha: f32) {
         CLEAR_COLOR[3] = f32_to_u8(f32_clamp01(alpha));
     }
 }
-
-
-
-
-
-
-
-
-
-
